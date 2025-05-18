@@ -21,7 +21,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /socios:
+ * /api/socios:
  *   get:
  *     summary: Obtener todos los socios
  *     tags: [Socios]
@@ -52,7 +52,7 @@ module.exports = router;
  *       200:
  *         description: Socio creado
  *
- * /socios/{id}:
+ * /api/socios/{id}:
  *   get:
  *     summary: Obtener un socio por ID
  *     tags: [Socios]

@@ -12,7 +12,7 @@ const librosController = require("../controller/librosController");
 
 /**
  * @swagger
- * /libros:
+ * /api/libros:
  *   get:
  *     summary: Obtener todos los libros
  *     tags: [Libros]
@@ -24,7 +24,7 @@ router.get("/", librosController.getAllLibros);
 
 /**
  * @swagger
- * /libros/{id}:
+ * /api/libros/{id}:
  *   get:
  *     summary: Obtener un libro por ID
  *     tags: [Libros]
@@ -45,7 +45,7 @@ router.get("/:id", librosController.getLibroById);
 
 /**
  * @swagger
- * /libros:
+ * /api/libros:
  *   post:
  *     summary: Crear un nuevo libro
  *     tags: [Libros]
@@ -79,7 +79,7 @@ router.post("/", librosController.createLibro);
 
 /**
  * @swagger
- * /libros/{id}:
+ * /api/libros/{id}:
  *   put:
  *     summary: Actualizar un libro existente
  *     tags: [Libros]
@@ -123,7 +123,7 @@ router.put("/:id", librosController.updateLibro);
 
 /**
  * @swagger
- * /libros/{id}:
+ * /api/libros/{id}:
  *   delete:
  *     summary: Eliminar un libro
  *     tags: [Libros]

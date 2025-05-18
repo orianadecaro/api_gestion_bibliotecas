@@ -11,7 +11,7 @@ const perfilController = require("../controller/perfilesController");
 
 /**
  * @swagger
- * /perfiles:
+ * /api/perfiles:
  *   get:
  *     summary: Obtener todos los perfiles
  *     tags: [Perfiles]
@@ -23,7 +23,7 @@ router.get("/", perfilController.getAllPerfiles);
 
 /**
  * @swagger
- * /perfiles/{id}:
+ * /api/perfiles/{id}:
  *   get:
  *     summary: Obtener un perfil por ID
  *     tags: [Perfiles]
@@ -44,7 +44,7 @@ router.get("/:id", perfilController.getPerfilesById);
 
 /**
  * @swagger
- * /perfiles:
+ * /api/perfiles:
  *   post:
  *     summary: Crear un nuevo perfil
  *     tags: [Perfiles]
@@ -66,7 +66,7 @@ router.post("/", perfilController.createPerfiles);
 
 /**
  * @swagger
- * /perfiles/{id}:
+ * /api/perfiles/{id}:
  *   put:
  *     summary: Actualizar un perfil existente
  *     tags: [Perfiles]
@@ -97,7 +97,7 @@ router.put("/:id", perfilController.updatePerfiles);
 
 /**
  * @swagger
- * /perfiles/{id}:
+ * /api/perfiles/{id}:
  *   delete:
  *     summary: Eliminar un perfil
  *     tags: [Perfiles]
