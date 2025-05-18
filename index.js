@@ -26,5 +26,4 @@ app.use("/perfiles", perfilesRoutes);
 // Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// ❌ NO uses app.listen aquí
 module.exports = app;
