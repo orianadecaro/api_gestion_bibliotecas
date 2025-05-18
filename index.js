@@ -2,13 +2,13 @@ const express = require("express");
 const serverless = require("serverless-http");
 const dotenv = require("dotenv");
 const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("../swagger");
-const authRoutes = require("../swagger/authRoutes");
-const librosRoutes = require("../swagger/librosRoutes");
-const usuariosRoutes = require("../swagger/usuariosRoutes");
-const sociosRoutes = require("../swagger/sociosRoutes");
-const prestamosRoutes = require("../swagger/prestamosRoutes");
-const perfilesRoutes = require("../swagger/perfilesRoutes");
+const swaggerSpec = require("./swagger");
+const authRoutes = require("./swagger/authRoutes");
+const librosRoutes = require("./swagger/librosRoutes");
+const usuariosRoutes = require("./swagger/usuariosRoutes");
+const sociosRoutes = require("./swagger/sociosRoutes");
+const prestamosRoutes = require("./swagger/prestamosRoutes");
+const perfilesRoutes = require("./swagger/perfilesRoutes");
 
 dotenv.config();
 
