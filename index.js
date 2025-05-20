@@ -1,5 +1,4 @@
 const express = require("express");
-const serverless = require("serverless-http");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
@@ -37,4 +36,7 @@ app.get("/", (req, res) => {
     `);
 });
 
-module.exports = serverless(app);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
