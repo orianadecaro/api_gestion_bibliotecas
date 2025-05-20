@@ -10,9 +10,17 @@
     {
       "src": "/(.*)",
       "dest": "/"
+    },
+    {
+      "src": "/docs",
+      "dest": "/docs/index.html"
+    },
+    {
+      "src": "/api-docs.json",
+      "dest": "/index.js"
     }
   ],
-  "rewrites": [{ "source": "/docs", "destination": "/docs/index.html" }],
+
   "build": {
     "env": {
       "NODE_ENV": "production"
