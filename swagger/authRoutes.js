@@ -4,7 +4,7 @@ const controller = require("../controller/authController");
 
 /**
  * @swagger
- * /:
+ * /login:
  *   post:
  *     summary: Iniciar sesión con email y contraseña
  *     tags: [Login]
@@ -25,6 +25,6 @@ const controller = require("../controller/authController");
  *       401:
  *         description: Credenciales inválidas
  */
-router.post("/", controller.login);
+router.post("/login", controller.login);
 
 module.exports = router;
