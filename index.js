@@ -26,4 +26,13 @@ app.use("/api/perfiles", perfilesRoutes);
 // Swagger
 app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.get("/", (req, res) => {
+  res.send(`
+        <html>
+            <head><title>NodeJs BO</title></head>
+            <body><h1>¡Bienvenido al backend de Gestión de Bibliotecas!</h1></body>
+        </html>
+    `);
+});
+
 module.exports = serverless(app);
