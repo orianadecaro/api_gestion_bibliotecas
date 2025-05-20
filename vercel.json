@@ -12,6 +12,7 @@
       "dest": "/"
     }
   ],
+  "rewrites": [{ "source": "/docs", "destination": "/docs/index.html" }],
   "build": {
     "env": {
       "NODE_ENV": "production"
