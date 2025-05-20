@@ -1,6 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 const authRoutes = require("./swagger/authRoutes");
@@ -13,6 +14,7 @@ const perfilesRoutes = require("./swagger/perfilesRoutes");
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Rutas
