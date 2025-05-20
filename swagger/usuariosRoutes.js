@@ -11,7 +11,7 @@ const usuarioController = require("../controller/usuarioController");
 
 /**
  * @swagger
- * /api/usuarios:
+ * /usuarios:
  *   get:
  *     summary: Obtener todos los usuarios
  *     tags: [Usuarios]
@@ -23,7 +23,7 @@ router.get("/", usuarioController.getUsuarios);
 
 /**
  * @swagger
- * /api/usuarios/{id}:
+ * /usuarios/{id}:
  *   get:
  *     summary: Obtener un usuario por ID
  *     tags: [Usuarios]
@@ -42,7 +42,7 @@ router.get("/:id", usuarioController.getUsuariosById);
 
 /**
  * @swagger
- * /api/usuarios:
+ * /usuarios:
  *   post:
  *     summary: Crear un nuevo usuario
  *     tags: [Usuarios]
@@ -73,7 +73,7 @@ router.post("/", usuarioController.createUsuario);
 
 /**
  * @swagger
- * /api/usuarios/{id}:
+ * /usuarios/{id}:
  *   put:
  *     summary: Actualizar un usuario
  *     tags: [Usuarios]
@@ -111,7 +111,7 @@ router.put("/:id", usuarioController.updateUsuario);
 
 /**
  * @swagger
- * /api/usuarios/{id}:
+ * /usuarios/{id}:
  *   delete:
  *     summary: Eliminar un usuario
  *     tags: [Usuarios]

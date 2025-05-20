@@ -18,15 +18,15 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use("/api/", authRoutes);
-app.use("/api/libros", librosRoutes);
-app.use("/api/usuarios", usuariosRoutes);
-app.use("/api/socios", sociosRoutes);
-app.use("/api/prestamos", prestamosRoutes);
-app.use("/api/perfiles", perfilesRoutes);
+app.use("/", authRoutes);
+app.use("/libros", librosRoutes);
+app.use("/usuarios", usuariosRoutes);
+app.use("/socios", sociosRoutes);
+app.use("/prestamos", prestamosRoutes);
+app.use("/perfiles", perfilesRoutes);
 
 // Swagger
-app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get("/", (req, res) => {
   res.send(`

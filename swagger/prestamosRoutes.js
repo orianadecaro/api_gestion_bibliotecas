@@ -11,7 +11,7 @@ const prestamosController = require("../controller/prestamosController");
 
 /**
  * @swagger
- * /api/prestamos:
+ * /prestamos:
  *   get:
  *     summary: Obtener todos los préstamos
  *     tags: [Prestamos]
@@ -23,7 +23,7 @@ router.get("/", prestamosController.getAllPrestamos);
 
 /**
  * @swagger
- * /api/prestamos/{id}:
+ * /prestamos/{id}:
  *   get:
  *     summary: Obtener un préstamo por ID
  *     tags: [Prestamos]
@@ -44,7 +44,7 @@ router.get("/:id", prestamosController.getPrestamosById);
 
 /**
  * @swagger
- * /api/prestamos:
+ * /prestamos:
  *   post:
  *     summary: Crear un nuevo préstamo
  *     tags: [Prestamos]
@@ -76,7 +76,7 @@ router.post("/", prestamosController.createPrestamos);
 
 /**
  * @swagger
- * /api/prestamos/{id}:
+ * /prestamos/{id}:
  *   put:
  *     summary: Actualizar un préstamo existente
  *     tags: [Prestamos]
@@ -117,7 +117,7 @@ router.put("/:id", prestamosController.updatePrestamos);
 
 /**
  * @swagger
- * /api/prestamos/{id}:
+ * /prestamos/{id}:
  *   delete:
  *     summary: Eliminar un préstamo
  *     tags: [Prestamos]
