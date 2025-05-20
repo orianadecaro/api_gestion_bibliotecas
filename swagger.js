@@ -1,23 +1,15 @@
-// swagger.js
-const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerJSDoc = require("swagger-jsdoc");
 
 const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "API Gestión de Biblioteca",
+      title: "API de Gestión de Bibliotecas",
       version: "1.0.0",
-      description: "Documentación de la API de gestión de biblioteca",
     },
-    servers: [
-      {
-        url: "https://api-gestion-bibliotecas.vercel.app/",
-      },
-    ],
   },
-  apis: ["./swagger/*.js"],
+  apis: ["./swagger/*.js"], // Asegúrate de que esta ruta sea correcta
 };
 
-const swaggerSpec = swaggerJsdoc(options);
-
+const swaggerSpec = swaggerJSDoc(options);
 module.exports = swaggerSpec;
