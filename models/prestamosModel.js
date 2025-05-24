@@ -1,4 +1,4 @@
-// models/librosModel.js
+// models/prestamosModel.js
 const supabase = require("../supabaseClient");
 
 const table = "prestamos";
@@ -19,16 +19,16 @@ const getById = async (id) => {
   return data;
 };
 
-const create = async (libro) => {
-  const { data, error } = await supabase.from(table).insert(libro).single();
+const create = async (prestamo) => {
+  const { data, error } = await supabase.from(table).insert(prestamo).single();
   if (error) throw error;
   return data;
 };
 
-const update = async (id, libro) => {
+const update = async (id, prestamo) => {
   const { data, error } = await supabase
     .from(table)
-    .update(libro)
+    .update(prestamo)
     .eq("id", id)
     .single();
   if (error) throw error;

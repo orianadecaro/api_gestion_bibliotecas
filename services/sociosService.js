@@ -2,7 +2,7 @@
 const SociosModel = require("../models/sociosModel");
 
 const getAllSocios = async () => {
-  return await SociosModel.get();
+  return await SociosModel.getAll();
 };
 
 const getSociosById = async (id) => {
