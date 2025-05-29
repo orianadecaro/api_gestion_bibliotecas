@@ -1,4 +1,6 @@
+const jwt = require("jsonwebtoken");
 const supabase = require("../supabaseClient");
+require("dotenv").config();
 
 module.exports = {
   async login(req, res) {
@@ -26,8 +28,20 @@ module.exports = {
         return res.status(403).json({ error: "Usuario inactivo" });
       }
 
+      // Generar token
+      const token = jwt.sign(
+        {
+          id: data.id,
+          email: data.email,
+          perfil_id: data.perfil_id,
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "8h" }
+      );
+
       return res.json({
         message: "Login exitoso",
+        token,
         user: data,
       });
     } catch (err) {
