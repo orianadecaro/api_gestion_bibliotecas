@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const librosController = require("../controller/librosController");
+const verifyToken = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -49,6 +50,8 @@ router.get("/:id", librosController.getLibroById);
  *   post:
  *     summary: Crear un nuevo libro
  *     tags: [Libros]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     requestBody:
  *       description: Datos del nuevo libro
  *       required: true
@@ -75,7 +78,7 @@ router.get("/:id", librosController.getLibroById);
  *       200:
  *         description: Libro creado exitosamente
  */
-router.post("/", librosController.createLibro);
+router.post("/", verifyToken, librosController.createLibro);
 
 /**
  * @swagger
@@ -83,6 +86,8 @@ router.post("/", librosController.createLibro);
  *   put:
  *     summary: Actualizar un libro existente
  *     tags: [Libros]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -119,7 +124,7 @@ router.post("/", librosController.createLibro);
  *       404:
  *         description: Libro no encontrado
  */
-router.put("/:id", librosController.updateLibro);
+router.put("/:id", verifyToken, librosController.updateLibro);
 
 /**
  * @swagger
@@ -127,6 +132,8 @@ router.put("/:id", librosController.updateLibro);
  *   delete:
  *     summary: Eliminar un libro
  *     tags: [Libros]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -140,6 +147,6 @@ router.put("/:id", librosController.updateLibro);
  *       404:
  *         description: Libro no encontrado
  */
-router.delete("/:id", librosController.deleteLibro);
+router.delete("/:id", verifyToken, librosController.deleteLibro);
 
 module.exports = router;

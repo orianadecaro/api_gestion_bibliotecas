@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const perfilController = require("../controller/perfilesController");
+const verifyToken = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -48,6 +49,8 @@ router.get("/:id", perfilController.getPerfilesById);
  *   post:
  *     summary: Crear un nuevo perfil
  *     tags: [Perfiles]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     requestBody:
  *       description: Datos del nuevo perfil
  *       required: true
@@ -62,7 +65,7 @@ router.get("/:id", perfilController.getPerfilesById);
  *       200:
  *         description: Perfil creado exitosamente
  */
-router.post("/", perfilController.createPerfiles);
+router.post("/", verifyToken, perfilController.createPerfiles);
 
 /**
  * @swagger
@@ -70,6 +73,8 @@ router.post("/", perfilController.createPerfiles);
  *   put:
  *     summary: Actualizar un perfil existente
  *     tags: [Perfiles]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -93,7 +98,7 @@ router.post("/", perfilController.createPerfiles);
  *       404:
  *         description: Perfil no encontrado
  */
-router.put("/:id", perfilController.updatePerfiles);
+router.put("/:id", verifyToken, perfilController.updatePerfiles);
 
 /**
  * @swagger
@@ -101,6 +106,8 @@ router.put("/:id", perfilController.updatePerfiles);
  *   delete:
  *     summary: Eliminar un perfil
  *     tags: [Perfiles]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -114,6 +121,6 @@ router.put("/:id", perfilController.updatePerfiles);
  *       404:
  *         description: Perfil no encontrado
  */
-router.delete("/:id", perfilController.deletePerfiles);
+router.delete("/:id", verifyToken, perfilController.deletePerfiles);
 
 module.exports = router;

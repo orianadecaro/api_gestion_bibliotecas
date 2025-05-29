@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const prestamosController = require("../controller/prestamosController");
+const verifyToken = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -48,6 +49,8 @@ router.get("/:id", prestamosController.getPrestamosById);
  *   post:
  *     summary: Crear un nuevo préstamo
  *     tags: [Prestamos]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     requestBody:
  *       description: Datos del nuevo préstamo
  *       required: true
@@ -72,7 +75,7 @@ router.get("/:id", prestamosController.getPrestamosById);
  *       200:
  *         description: Préstamo creado exitosamente
  */
-router.post("/", prestamosController.createPrestamos);
+router.post("/", verifyToken, prestamosController.createPrestamos);
 
 /**
  * @swagger
@@ -80,6 +83,8 @@ router.post("/", prestamosController.createPrestamos);
  *   put:
  *     summary: Actualizar un préstamo existente
  *     tags: [Prestamos]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -113,7 +118,7 @@ router.post("/", prestamosController.createPrestamos);
  *       404:
  *         description: Préstamo no encontrado
  */
-router.put("/:id", prestamosController.updatePrestamos);
+router.put("/:id", verifyToken, prestamosController.updatePrestamos);
 
 /**
  * @swagger
@@ -121,6 +126,8 @@ router.put("/:id", prestamosController.updatePrestamos);
  *   delete:
  *     summary: Eliminar un préstamo
  *     tags: [Prestamos]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -134,6 +141,6 @@ router.put("/:id", prestamosController.updatePrestamos);
  *       404:
  *         description: Préstamo no encontrado
  */
-router.delete("/:id", prestamosController.deletePrestamos);
+router.delete("/:id", verifyToken, prestamosController.deletePrestamos);
 
 module.exports = router;

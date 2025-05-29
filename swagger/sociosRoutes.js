@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const SociosController = require("../controller/sociosController");
+const verifyToken = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -49,6 +50,8 @@ router.get("/:id", SociosController.getSociosById);
  *   post:
  *     summary: Crear un nuevo socio
  *     tags: [Socios]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     requestBody:
  *       description: Datos del nuevo socio
  *       required: true
@@ -71,7 +74,7 @@ router.get("/:id", SociosController.getSociosById);
  *       200:
  *         description: Socio creado exitosamente
  */
-router.post("/", SociosController.createSocios);
+router.post("/", verifyToken, SociosController.createSocios);
 
 /**
  * @swagger
@@ -79,6 +82,8 @@ router.post("/", SociosController.createSocios);
  *   put:
  *     summary: Actualizar un socio existente
  *     tags: [Socios]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -110,7 +115,7 @@ router.post("/", SociosController.createSocios);
  *       404:
  *         description: Socio no encontrado
  */
-router.put("/:id", SociosController.updateSocios);
+router.put("/:id", verifyToken, SociosController.updateSocios);
 
 /**
  * @swagger
@@ -118,6 +123,8 @@ router.put("/:id", SociosController.updateSocios);
  *   delete:
  *     summary: Eliminar un socio
  *     tags: [Socios]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -131,6 +138,6 @@ router.put("/:id", SociosController.updateSocios);
  *       404:
  *         description: Socio no encontrado
  */
-router.delete("/:id", SociosController.deleteSocios);
+router.delete("/:id", verifyToken, SociosController.deleteSocios);
 
 module.exports = router;

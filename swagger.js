@@ -8,7 +8,47 @@ const options = {
       version: "1.0.0",
     },
   },
-  apis: ["./swagger/*.js"], // Asegúrate de que esta ruta sea correcta
+  tags: [
+    {
+      name: "Login",
+      description: "Autenticación de usuarios",
+    },
+    {
+      name: "Libros",
+      description: "Gestión de libros",
+    },
+    {
+      name: "Usuarios",
+      description: "Gestión de usuarios",
+    },
+    {
+      name: "Socios",
+      description: "Gestión de socios",
+    },
+    {
+      name: "Préstamos",
+      description: "Gestión de préstamos",
+    },
+    {
+      name: "Perfiles",
+      description: "Gestión de perfiles",
+    },
+  ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+      },
+    },
+  },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
+  apis: ["./swagger/*.js"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

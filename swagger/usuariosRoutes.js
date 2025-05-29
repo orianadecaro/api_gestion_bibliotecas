@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const usuarioController = require("../controller/usuarioController");
+const verifyToken = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -46,6 +47,8 @@ router.get("/:id", usuarioController.getUsuariosById);
  *   post:
  *     summary: Crear un nuevo usuario
  *     tags: [Usuarios]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     requestBody:
  *       required: true
  *       content:
@@ -69,7 +72,7 @@ router.get("/:id", usuarioController.getUsuariosById);
  *       200:
  *         description: Usuario creado
  */
-router.post("/", usuarioController.createUsuario);
+router.post("/", verifyToken, usuarioController.createUsuario);
 
 /**
  * @swagger
@@ -77,6 +80,8 @@ router.post("/", usuarioController.createUsuario);
  *   put:
  *     summary: Actualizar un usuario
  *     tags: [Usuarios]
+ *     security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -107,7 +112,7 @@ router.post("/", usuarioController.createUsuario);
  *       200:
  *         description: Usuario actualizado
  */
-router.put("/:id", usuarioController.updateUsuario);
+router.put("/:id", verifyToken, usuarioController.updateUsuario);
 
 /**
  * @swagger
@@ -115,6 +120,8 @@ router.put("/:id", usuarioController.updateUsuario);
  *   delete:
  *     summary: Eliminar un usuario
  *     tags: [Usuarios]
+ *    security:
+ *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path
  *         name: id
@@ -126,6 +133,6 @@ router.put("/:id", usuarioController.updateUsuario);
  *       200:
  *         description: Usuario eliminado
  */
-router.delete("/:id", usuarioController.deleteUsuario);
+router.delete("/:id", verifyToken, usuarioController.deleteUsuario);
 
 module.exports = router;
