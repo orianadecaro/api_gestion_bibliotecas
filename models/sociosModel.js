@@ -14,7 +14,7 @@ const getById = async (id) => {
     .from(table)
     .select("*")
     .eq("id", id)
-    .single();
+    .maybeSingle();
   if (error) throw error;
   return data;
 };

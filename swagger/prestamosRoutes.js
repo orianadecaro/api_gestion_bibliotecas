@@ -60,14 +60,14 @@ router.get("/:id", prestamosController.getPrestamosById);
  *             type: object
  *             properties:
  *               libro_id:
- *                 type: string
+ *                 type: integer
  *               socio_id:
- *                 type: string
+ *                 type: integer
  *               fechaprestamo:
  *                 type: string
  *                 format: date
  *               fechadevolucion:
- *                 type: string
+ *                 type: null
  *                 format: date
  *               estado:
  *                 type: string
@@ -101,14 +101,14 @@ router.post("/", verifyToken, prestamosController.createPrestamos);
  *             type: object
  *             properties:
  *               libro_id:
- *                 type: string
+ *                 type: integer
  *               socio_id:
- *                 type: string
+ *                 type: integer
  *               fechaprestamo:
  *                 type: string
  *                 format: date
  *               fechadevolucion:
- *                 type: string
+ *                 type: null
  *                 format: date
  *               estado:
  *                 type: string

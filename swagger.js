@@ -12,7 +12,7 @@ const options = {
         bearerAuth: {
           type: "http",
           scheme: "bearer",
-          bearerFormat: "JWT", // Opcional, para que diga "JWT" en Swagger UI
+          bearerFormat: "JWT",
         },
       },
     },

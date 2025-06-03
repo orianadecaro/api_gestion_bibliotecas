@@ -1,7 +1,8 @@
 // services/prestamosService.js
 const prestamosModel = require("../models/prestamosModel");
-const sendEmail = require("../utils/emailSender");
+const sendEmail = require("../emailSender");
 const sociosModel = require("../models/sociosModel");
+const librosModel = require("../models/librosModel");
 
 const getAllPrestamos = async () => {
   return await prestamosModel.getAll();
@@ -14,35 +15,80 @@ const getPrestamosById = async (id) => {
 const createPrestamos = async (prestamosData) => {
   console.log("Datos recibidos para crear préstamo:", prestamosData);
 
-  const nuevoPrestamo = await prestamosModel.create(prestamosData);
-  console.log("Respuesta de Supabase:", nuevoPrestamo);
-
-  if (!nuevoPrestamo) {
-    throw new Error("No se pudo crear el préstamo");
+  const libro = await librosModel.getById(prestamosData.libro_id);
+  if (!libro) {
+    throw new Error(`El libro con id ${prestamosData.libro_id} no existe.`);
   }
 
-  const socio = await sociosModel.getById(nuevoPrestamo.socio_id);
-  if (socio?.email) {
-    await sendEmail(
-      socio.email,
-      "Nuevo préstamo registrado",
-      `Hola ${socio.nombre}, se ha registrado un nuevo préstamo a tu nombre con éxito.\n\nSaludos,\nBiblioteca Jorge Luis Borges`
-    );
+  const socio = await sociosModel.getById(prestamosData.socio_id);
+  if (!socio) {
+    throw new Error(`El socio con id ${prestamosData.socio_id} no existe.`);
   }
 
-  return nuevoPrestamo;
+  try {
+    const nuevoPrestamo = await prestamosModel.create(prestamosData);
+    console.log("Préstamo creado:", nuevoPrestamo);
+
+    if (socio.email) {
+      const subject = "Confirmación de préstamo - Biblioteca Jorge Luis Borges";
+      const body = `
+        Hola ${socio.nombre},
+
+        Se ha registrado exitosamente el préstamo del libro:
+        Título: ${libro.titulo}
+        Autor: ${libro.autor}
+
+        Fecha de préstamo: ${prestamosData.fechaprestamo}
+        Fecha de devolución: ${
+          prestamosData.fechadevolucion || "No especificada"
+        }
+        Estado: ${prestamosData.estado}
+
+        Muchas gracias por usar nuestra biblioteca.
+
+        Saludos,
+        Biblioteca Jorge Luis Borges
+      `;
+      await sendEmail(socio.email, subject, body);
+    }
+
+    return nuevoPrestamo;
+  } catch (error) {
+    console.error("Error al crear el préstamo:", error.message);
+    throw error;
+  }
 };
 
 const updatePrestamos = async (id, prestamosData) => {
   const prestamoActualizado = await prestamosModel.update(id, prestamosData);
 
+  if (!prestamoActualizado) {
+    throw new Error(`No se encontró el préstamo con id ${id} para actualizar.`);
+  }
+
   const socio = await sociosModel.getById(prestamoActualizado.socio_id);
   if (socio?.email) {
-    await sendEmail(
-      socio.email,
-      "Actualización de préstamo",
-      `Hola ${socio.nombre}, tu devolución  ha sido registrada con éxito.\n\nSaludos,\nBiblioteca Jorge Luis Borges`
-    );
+    const subject = "Actualización de préstamo - Biblioteca Jorge Luis Borges";
+    const body = `
+      Hola ${socio.nombre},
+
+      Tu préstamo ha sido actualizado con éxito.
+
+      Estado actual del préstamo: ${
+        prestamosData.estado || prestamoActualizado.estado
+      }
+      Fecha de devolución: ${
+        prestamosData.fechadevolucion ||
+        prestamoActualizado.fechadevolucion ||
+        "No especificada"
+      }
+
+      Muchas gracias por usar nuestra biblioteca.
+
+      Saludos,
+      Biblioteca Jorge Luis Borges
+    `;
+    await sendEmail(socio.email, subject, body);
   }
 
   return prestamoActualizado;

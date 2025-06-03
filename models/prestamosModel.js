@@ -20,8 +20,15 @@ const getById = async (id) => {
 };
 
 const create = async (prestamo) => {
-  const { data, error } = await supabase.from(table).insert(prestamo).single();
-  if (error) throw error;
+  const { data, error } = await supabase
+    .from(table)
+    .insert(prestamo)
+    .select()
+    .single();
+  if (error) {
+    console.error("Error insertando préstamo:", error);
+    throw error;
+  }
   return data;
 };
 
@@ -30,6 +37,7 @@ const update = async (id, prestamo) => {
     .from(table)
     .update(prestamo)
     .eq("id", id)
+    .select()
     .single();
   if (error) throw error;
   return data;
