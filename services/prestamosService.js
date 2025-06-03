@@ -12,7 +12,14 @@ const getPrestamosById = async (id) => {
 };
 
 const createPrestamos = async (prestamosData) => {
+  console.log("Datos recibidos para crear préstamo:", prestamosData);
+
   const nuevoPrestamo = await prestamosModel.create(prestamosData);
+  console.log("Respuesta de Supabase:", nuevoPrestamo);
+
+  if (!nuevoPrestamo) {
+    throw new Error("No se pudo crear el préstamo");
+  }
 
   const socio = await sociosModel.getById(nuevoPrestamo.socio_id);
   if (socio?.email) {
