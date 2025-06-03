@@ -39,7 +39,7 @@ const options = {
         description: "Gestión de socios",
       },
       {
-        name: "Préstamos",
+        name: "Prestamos",
         description: "Gestión de préstamos",
       },
       {
