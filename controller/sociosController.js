@@ -23,6 +23,7 @@ const createSocios = async (req, res) => {
     const data = await SociosService.createSocios(req.body);
     res.status(201).json(data);
   } catch (err) {
+    console.error("Error en createPrestamos:", err);
     res.status(400).json({ error: err.message });
   }
 };

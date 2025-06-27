@@ -12,6 +12,10 @@ const getPrestamosById = async (id) => {
   return await prestamosModel.getById(id);
 };
 
+const getPrestamosBySocioId = async (socioId) => {
+  return await prestamosModel.getBySocioId(socioId);
+};
+
 const createPrestamos = async (prestamosData) => {
   console.log("Datos recibidos para crear préstamo:", prestamosData);
 
@@ -32,22 +36,23 @@ const createPrestamos = async (prestamosData) => {
     if (socio.email) {
       const subject = "Confirmación de préstamo - Biblioteca Jorge Luis Borges";
       const body = `
-        Hola ${socio.nombre},
+        <p> Hola ${socio.nombre},</p>
 
-        Se ha registrado exitosamente el préstamo del libro:
-        Título: ${libro.titulo}
-        Autor: ${libro.autor}
+        <p>Se ha registrado exitosamente el préstamo del libro: </p>
+        <p>Título: ${libro.titulo} </p>
+        <p>Autor: ${libro.autor} </p>
 
-        Fecha de préstamo: ${prestamosData.fechaprestamo}
-        Fecha de devolución: ${
-          prestamosData.fechadevolucion || "No especificada"
-        }
-        Estado: ${prestamosData.estado}
+        <p><strong>Fecha de préstamo:</strong> ${prestamosData.fechaprestamo} </p>
+        <p><strong>Fecha de devolución:</strong> ${prestamosData.fechadevolucion || "No especificada"
+        }</p>
+       <p><strong>Estado:</strong> ${prestamosData.estado}</p>
 
-        Muchas gracias por usar nuestra biblioteca.
+        <p>Muchas gracias por usar nuestra biblioteca.</p>
 
-        Saludos,
-        Biblioteca Jorge Luis Borges
+       <p> Saludos,</p>
+       <p> Biblioteca Jorge Luis Borges - EATA</p>
+
+        <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
       `;
       await sendEmail(socio.email, subject, body);
     }
@@ -74,13 +79,11 @@ const updatePrestamos = async (id, prestamosData) => {
 
       Tu préstamo ha sido actualizado con éxito.
 
-      Estado actual del préstamo: ${
-        prestamosData.estado || prestamoActualizado.estado
+      Estado actual del préstamo: ${prestamosData.estado || prestamoActualizado.estado
       }
-      Fecha de devolución: ${
-        prestamosData.fechadevolucion ||
-        prestamoActualizado.fechadevolucion ||
-        "No especificada"
+      Fecha de devolución: ${prestamosData.fechadevolucion ||
+      prestamoActualizado.fechadevolucion ||
+      "No especificada"
       }
 
       Muchas gracias por usar nuestra biblioteca.
@@ -104,4 +107,5 @@ module.exports = {
   createPrestamos,
   updatePrestamos,
   deletePrestamos,
+  getPrestamosBySocioId
 };

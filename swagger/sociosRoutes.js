@@ -42,8 +42,8 @@ router.get("/", SociosController.getSocios);
  *       404:
  *         description: Socio no encontrado
  */
-router.get("/:id", SociosController.getSociosById);
 
+router.get("/:id", SociosController.getSociosById);
 /**
  * @swagger
  * /socios:
@@ -51,7 +51,7 @@ router.get("/:id", SociosController.getSociosById);
  *     summary: Crear un nuevo socio
  *     tags: [Socios]
  *     security:
- *       - bearerAuth: []  # Requiere token
+ *       - bearerAuth: []
  *     requestBody:
  *       description: Datos del nuevo socio
  *       required: true
@@ -70,12 +70,16 @@ router.get("/:id", SociosController.getSociosById);
  *                 type: string
  *               estado:
  *                 type: string
+ *               dni:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Socio creado exitosamente
  */
-router.post("/", verifyToken, SociosController.createSocios);
 
+router.post("/", SociosController.createSocios);
 /**
  * @swagger
  * /socios/{id}:
@@ -83,7 +87,7 @@ router.post("/", verifyToken, SociosController.createSocios);
  *     summary: Actualizar un socio existente
  *     tags: [Socios]
  *     security:
- *       - bearerAuth: []  # Requiere token
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -109,12 +113,17 @@ router.post("/", verifyToken, SociosController.createSocios);
  *                 type: string
  *               estado:
  *                 type: string
+ *               dni:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Socio actualizado exitosamente
  *       404:
  *         description: Socio no encontrado
  */
+
 router.put("/:id", verifyToken, SociosController.updateSocios);
 
 /**

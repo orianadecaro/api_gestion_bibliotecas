@@ -24,8 +24,8 @@ Oriana De Caro
 ## ⚙️ Configuración del entorno
 
 1. Cloná el repositorio:
-   git clone <url-del-repo>
-   cd aoi-gestion-bibliotecas
+   git clone <api-gestion-bibliotecas>
+   cd api-gestion-bibliotecas
 
 2. Instalá las dependencias:
    npm install

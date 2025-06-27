@@ -19,6 +19,20 @@ const getById = async (id) => {
   return data;
 };
 
+
+const getBySocioId = async (socioId) => {
+  const { data, error } = await supabase
+    .from(table)
+    .select("*")
+    .eq("socio_id", socioId)
+    .order("fecha_prestamo", { ascending: false });
+
+  if (error) throw error;
+  return data;
+};
+
+
+
 const create = async (prestamo) => {
   const { data, error } = await supabase
     .from(table)
@@ -55,4 +69,5 @@ module.exports = {
   create,
   update,
   remove,
+  getBySocioId
 };

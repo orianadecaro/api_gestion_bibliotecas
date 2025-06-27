@@ -19,11 +19,23 @@ const getPrestamosById = async (req, res) => {
   }
 };
 
+const getHistorialPrestamosBySocio = async (req, res) => {
+  try {
+    const socioId = req.user.id; // tomado del token decodificado
+    const historial = await PrestamosService.getPrestamosBySocioId(socioId);
+    res.json(historial);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 const createPrestamos = async (req, res) => {
   try {
     const nuevoPrestamos = await PrestamosService.createPrestamos(req.body);
     res.status(201).json(nuevoPrestamos);
   } catch (error) {
+    console.error("Error en createPrestamos:", error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -51,6 +63,7 @@ const deletePrestamos = async (req, res) => {
 
 module.exports = {
   getAllPrestamos,
+  getHistorialPrestamosBySocio,
   getPrestamosById,
   createPrestamos,
   updatePrestamos,

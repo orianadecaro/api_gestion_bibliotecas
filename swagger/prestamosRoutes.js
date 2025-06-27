@@ -3,6 +3,7 @@ const router = express.Router();
 const prestamosController = require("../controller/prestamosController");
 const verifyToken = require("../middlewares/authMiddleware");
 
+
 /**
  * @swagger
  * tags:
@@ -42,6 +43,25 @@ router.get("/", prestamosController.getAllPrestamos);
  *         description: Préstamo no encontrado
  */
 router.get("/:id", prestamosController.getPrestamosById);
+
+
+
+/**
+ * @swagger
+ * /socios/historial:
+ *   get:
+ *     summary: Obtener historial de préstamos del socio autenticado
+ *     tags: [Socios]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de préstamos del socio
+ *       401:
+ *         description: Token inválido o no autorizado
+ */
+router.get("/socios/historial", verifyToken, prestamosController.getHistorialPrestamosBySocio);
+
 
 /**
  * @swagger

@@ -120,7 +120,7 @@ router.put("/:id", verifyToken, usuarioController.updateUsuario);
  *   delete:
  *     summary: Eliminar un usuario
  *     tags: [Usuarios]
- *    security:
+ *     security:
  *       - bearerAuth: []  # Requiere token
  *     parameters:
  *       - in: path

@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const supabase = require("../supabaseClient");
 require("dotenv").config();
 
@@ -13,14 +14,20 @@ module.exports = {
     }
 
     try {
+      // Buscar solo por email
       const { data, error } = await supabase
         .from("usuarios")
         .select("id, nombre, email, perfil_id, estado, password_hash, telefono")
         .eq("email", email)
-        .eq("password_hash", password)
         .single();
 
       if (error || !data) {
+        return res.status(401).json({ error: "Credenciales inválidas" });
+      }
+
+      // Comparar el password ingresado con el hash almacenado
+      const match = await bcrypt.compare(password, data.password_hash);
+      if (!match) {
         return res.status(401).json({ error: "Credenciales inválidas" });
       }
 
