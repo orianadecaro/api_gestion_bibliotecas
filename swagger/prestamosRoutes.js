@@ -60,7 +60,7 @@ router.get("/:id", prestamosController.getPrestamosById);
  *       401:
  *         description: Token inválido o no autorizado
  */
-router.get("/socios/historial", verifyToken, prestamosController.getHistorialPrestamosBySocio);
+router.get("/socios/historial/:id", verifyToken, prestamosController.getHistorialPrestamosBySocio);
 
 
 /**

@@ -14,7 +14,7 @@ const createSocios = async (socioData) => {
   try {
     const nuevoSocio = await SociosModel.create(socioData);
 
-    if (nuevoSocio?.email && nuevoSocio?.nombre) {
+    if (nuevoSocio?.email) {
       const subject = "¡Bienvenido/a a la comunidad!";
       const body = `
       <p>Hola ${nuevoSocio.nombre},</p>

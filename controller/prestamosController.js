@@ -21,7 +21,7 @@ const getPrestamosById = async (req, res) => {
 
 const getHistorialPrestamosBySocio = async (req, res) => {
   try {
-    const socioId = req.user.id; // tomado del token decodificado
+    const socioId = parseInt(req.params.id, 10);
     const historial = await PrestamosService.getPrestamosBySocioId(socioId);
     res.json(historial);
   } catch (error) {
