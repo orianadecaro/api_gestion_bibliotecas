@@ -48,7 +48,7 @@ router.get("/:id", prestamosController.getPrestamosById);
 
 /**
  * @swagger
- * /socios/historial:
+ * /socios/historial/{id}:
  *   get:
  *     summary: Obtener historial de préstamos del socio autenticado
  *     tags: [Socios]
@@ -60,7 +60,7 @@ router.get("/:id", prestamosController.getPrestamosById);
  *       401:
  *         description: Token inválido o no autorizado
  */
-router.get("/socios/historial/:id", verifyToken, prestamosController.getHistorialPrestamosBySocio);
+router.get("/:id", verifyToken, prestamosController.getHistorialPrestamosBySocio);
 
 
 /**
