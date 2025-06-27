@@ -27,7 +27,7 @@ const SociosAuthController = require("../controller/sociosAuthController");
  *       403:
  *         description: Socio inactivo
  */
-router.post("/login", SociosAuthController.login);
+router.post("/socios/login", SociosAuthController.login);
 
 module.exports = router;
 
