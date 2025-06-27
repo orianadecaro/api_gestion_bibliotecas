@@ -5,7 +5,7 @@ const SocioProfileController = require("../controller/socioProfileController");
 
 /**
  * @swagger
- * /socio/profile:
+ * /socios/profile:
  *   get:
  *     summary: Obtener el perfil del socio autenticado
  *     tags: [Socios]
@@ -17,6 +17,6 @@ const SocioProfileController = require("../controller/socioProfileController");
  *       401:
  *         description: No autorizado
  */
-router.get("/profile", verifyToken, SocioProfileController.getProfile);
+router.get("/:id", verifyToken, SocioProfileController.getProfile);
 
 module.exports = router;

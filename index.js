@@ -9,6 +9,7 @@ const sociosRoutes = require("./swagger/sociosRoutes");
 const prestamosRoutes = require("./swagger/prestamosRoutes");
 const perfilesRoutes = require("./swagger/perfilesRoutes");
 const sociosAuthRoutes = require("./swagger/sociosAuthRoutes");
+const sociosProfileRoutes = require("./swagger/socioProfileRoute");
 const swaggerUi = require("swagger-ui-express");
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use("/", sociosAuthRoutes);
 app.use("/libros", librosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/socios", sociosRoutes);
+app.use("/socios/profile", sociosProfileRoutes);
 app.use("/prestamos", prestamosRoutes);
 app.use("/perfiles", perfilesRoutes);
 
