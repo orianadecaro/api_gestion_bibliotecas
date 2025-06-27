@@ -1,6 +1,7 @@
 // models/sociosModel.js
 const supabase = require("../supabaseClient");
-
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 const table = "socios";
 
 const getAll = async () => {
