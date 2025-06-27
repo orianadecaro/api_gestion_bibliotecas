@@ -22,7 +22,7 @@ const getById = async (id) => {
 
 
 const create = async (usuario) => {
-  if (usuario.password) {
+  if (usuario.password_hash) {
     const hashedPassword = await bcrypt.hash(usuario.password_hash, saltRounds);
     usuario.password_hash = hashedPassword;
   }
