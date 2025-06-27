@@ -72,7 +72,7 @@ router.get("/:id", usuarioController.getUsuariosById);
  *       200:
  *         description: Usuario creado
  */
-router.post("/", verifyToken, usuarioController.createUsuario);
+router.post("/", usuarioController.createUsuario);
 
 /**
  * @swagger

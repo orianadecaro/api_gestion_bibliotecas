@@ -18,12 +18,15 @@ const getPrestamosById = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 const getHistorialPrestamosBySocio = async (req, res) => {
   try {
     const socioId = parseInt(req.params.id, 10);
     const historial = await PrestamosService.getPrestamosBySocioId(socioId);
-    res.json(historial);
+    // historial es un array
+    if (!historial || historial.length === 0) {
+      return res.status(404).json({ error: "Historial no encontrado" });
+    }
+    res.json(historial); // devuelve array
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
