@@ -45,30 +45,30 @@ router.get("/", prestamosController.getAllPrestamos);
 router.get("/:id", prestamosController.getPrestamosById);
 
 
-
 /**
  * @swagger
  * /socios/historial/{id}:
  *   get:
  *     summary: Obtener historial de préstamos de un socio por su ID
- *     tags: [Socios]  // Categoría donde aparece esta ruta en la documentación
+ *     tags:
+ *       - Socios
  *     security:
- *       - bearerAuth: []  // Indica que requiere token de autorización
+ *       - bearerAuth: []
  *     parameters:
- *       - in: path          // Parámetro que viene en la ruta
- *         name: id          // Nombre del parámetro
- *         required: true    // Es obligatorio
+ *       - in: path
+ *         name: id
+ *         required: true
  *         description: ID del socio para obtener su historial
  *         schema:
- *           type: integer  // El tipo es número
+ *           type: integer
  *     responses:
  *       200:
  *         description: Lista de préstamos del socio
  *         content:
  *           application/json:
  *             schema:
- *               type: array    // Devuelve un arreglo
- *               items:         // Cada elemento es un objeto con estas propiedades
+ *               type: array
+ *               items:
  *                 type: object
  *                 properties:
  *                   id:
@@ -95,6 +95,7 @@ router.get("/:id", prestamosController.getPrestamosById);
  */
 
 router.get("/:id", verifyToken, prestamosController.getHistorialPrestamosBySocio);
+
 
 
 /**
