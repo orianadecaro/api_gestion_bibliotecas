@@ -14,7 +14,7 @@ console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "******" : null);
 const sendEmail = async (to, subject, text) => {
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: '"Biblioteca Jorge Luis Borges" <no-reply@biblioteca.com>',
     to,
     subject,
     html,

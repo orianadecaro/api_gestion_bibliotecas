@@ -23,8 +23,8 @@ const getById = async (id) => {
 
 const create = async (usuario) => {
   if (usuario.password) {
-    const hashedPassword = await bcrypt.hash(usuario.password, saltRounds);
-    usuario.password = hashedPassword;
+    const hashedPassword = await bcrypt.hash(usuario.password_hash, saltRounds);
+    usuario.password_hash = hashedPassword;
   }
   const { data, error } = await supabase.from(table).insert(usuario).single();
   if (error) throw error;
