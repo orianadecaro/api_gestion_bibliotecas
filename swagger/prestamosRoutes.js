@@ -50,16 +50,50 @@ router.get("/:id", prestamosController.getPrestamosById);
  * @swagger
  * /socios/historial/{id}:
  *   get:
- *     summary: Obtener historial de préstamos del socio autenticado
- *     tags: [Socios]
+ *     summary: Obtener historial de préstamos de un socio por su ID
+ *     tags: [Socios]  // Categoría donde aparece esta ruta en la documentación
  *     security:
- *       - bearerAuth: []
+ *       - bearerAuth: []  // Indica que requiere token de autorización
+ *     parameters:
+ *       - in: path          // Parámetro que viene en la ruta
+ *         name: id          // Nombre del parámetro
+ *         required: true    // Es obligatorio
+ *         description: ID del socio para obtener su historial
+ *         schema:
+ *           type: integer  // El tipo es número
  *     responses:
  *       200:
  *         description: Lista de préstamos del socio
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array    // Devuelve un arreglo
+ *               items:         // Cada elemento es un objeto con estas propiedades
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   socio_id:
+ *                     type: integer
+ *                   libro_id:
+ *                     type: integer
+ *                   fechaprestamo:
+ *                     type: string
+ *                     format: date-time
+ *                   fechadevolucion:
+ *                     type: string
+ *                     format: date-time
+ *                     nullable: true
+ *                   estado:
+ *                     type: string
  *       401:
- *         description: Token inválido o no autorizado
+ *         description: No autorizado, token inválido o no proporcionado
+ *       404:
+ *         description: Socio o historial no encontrado
+ *       500:
+ *         description: Error del servidor
  */
+
 router.get("/:id", verifyToken, prestamosController.getHistorialPrestamosBySocio);
 
 
