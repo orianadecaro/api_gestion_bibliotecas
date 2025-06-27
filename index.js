@@ -18,7 +18,7 @@ app.use(express.json());
 
 // Rutas
 app.use("/", authRoutes);
-app.use("/socios/login", sociosAuthRoutes);
+app.use("/", sociosAuthRoutes);
 app.use("/libros", librosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/socios", sociosRoutes);
