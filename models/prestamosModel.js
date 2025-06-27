@@ -25,7 +25,7 @@ const getBySocioId = async (socioId) => {
     .from(table)
     .select("*")
     .eq("socio_id", socioId)
-    .order("fecha_prestamo", { ascending: false }); // NO .single() acá!
+    .order("fechaprestamo", { ascending: false }); // NO .single() acá!
 
   if (error) throw error;
   return data; // devuelve un array
