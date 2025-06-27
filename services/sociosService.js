@@ -1,6 +1,6 @@
 // services/SociosService.js
-const sendEmail = require("../emailSender");
 const SociosModel = require("../models/sociosModel");
+const sendEmail = require("../emailSender");
 
 const getAllSocios = async () => {
   return await SociosModel.getAll();
@@ -17,13 +17,13 @@ const createSocios = async (socioData) => {
     if (nuevoSocio?.email) {
       const subject = "¡Bienvenido/a a la comunidad!";
       const body = `
-      <p>Hola ${nuevoSocio.nombre},</p>
+     Hola ${nuevoSocio.nombre},
     
-      <p>Te damos la bienvenida como nuevo socio/a. Gracias por sumarte a nuestra biblioteca.</p>
+     Te damos la bienvenida como nuevo socio/a. Gracias por sumarte a nuestra biblioteca.
     
-      <p>Ante cualquier consulta, estamos para ayudarte.</p>
+     Ante cualquier consulta, estamos para ayudarte.
     
-      <p>Saludos,<br/>Biblioteca Jorge Luis Borges - EATA</p>
+     Saludos, Biblioteca Jorge Luis Borges - EATA
     
       <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
     `;

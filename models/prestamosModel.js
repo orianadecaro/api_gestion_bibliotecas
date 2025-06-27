@@ -24,10 +24,9 @@ const getBySocioId = async (socioId) => {
   const { data, error } = await supabase
     .from(table)
     .select("*")
-    .eq("socio_id", socioId)
-
+    .eq("socio_id", socioId);
   if (error) throw error;
-  return data; // devuelve un array
+  return data; // array de préstamos
 };
 
 

@@ -1,6 +1,5 @@
 // services/UsuarioService.js
 const UsuarioModel = require("../models/usuarioModel");
-const bcrypt = require("bcrypt");
 const sendEmail = require("../emailSender");
 
 const getAllUsuarios = async () => {
@@ -24,11 +23,14 @@ const createUsuarios = async (usuarioData) => {
     if (nuevoUsuario?.email) {
       const subject = "¡Bienvenido/a a la plataforma!";
       const body = `
-        <p>Hola ${nuevoUsuario.nombre},</p>
+        Hola ${nuevoUsuario.nombre},
         
-        <p>Te damos la bienvenida como nuevo staff de la bibilioteca. Gracias por sumarte  en nuestra comunidad.</p>
-        <p>Ante cualquier consulta, estamos para ayudarte.</p>
-        <p>Saludos,<br/>Equipo Biblioteca</p>
+        Te damos la bienvenida como nuevo staff de la bibilioteca. Gracias por sumarte  en nuestra comunidad.
+
+        Ante cualquier consulta, estamos para ayudarte.
+
+        Saludos, Equipo Biblioteca
+
         <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
       `;
 

@@ -10,7 +10,7 @@ const prestamosRoutes = require("./swagger/prestamosRoutes");
 const perfilesRoutes = require("./swagger/perfilesRoutes");
 const sociosAuthRoutes = require("./swagger/sociosAuthRoutes");
 const sociosProfileRoutes = require("./swagger/socioProfileRoute");
-const sociosHistorialRoutes = require("./swagger/prestamosRoutes");
+const sociosHistorialRoutes = require("./swagger/sociosHistorialRoutes");
 const swaggerUi = require("swagger-ui-express");
 dotenv.config();
 
