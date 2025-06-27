@@ -15,22 +15,18 @@ const getUsuariosById = async (id) => {
 
 const createUsuarios = async (usuarioData) => {
   try {
-    // 1. Hashear password
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(usuarioData.password, saltRounds);
 
     // 2. Crear usuario con password hasheado
-    const nuevoUsuario = await UsuarioModel.create({
-      ...usuarioData,
-      password: hashedPassword,
-    });
+    const nuevoUsuario = await UsuarioModel.create(usuarioData
+    );
 
     // 3. Enviar email de bienvenida
     if (nuevoUsuario?.email) {
       const subject = "¡Bienvenido/a a la plataforma!";
       const body = `
-        <p>Hola ${nuevoUsuario.nombre || nuevoUsuario.email},</p>
-        <p>Gracias por registrarte en nuestra plataforma.</p>
+        <p>Hola ${nuevoUsuario.nombre},</p>
+        
+        <p>Te damos la bienvenida como nuevo staff de la bibilioteca. Gracias por sumarte  en nuestra comunidad.</p>
         <p>Ante cualquier consulta, estamos para ayudarte.</p>
         <p>Saludos,<br/>Equipo Biblioteca</p>
         <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />

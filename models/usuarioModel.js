@@ -1,6 +1,7 @@
 // models/usuariosModel.js
 const supabase = require("../supabaseClient");
-
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 const table = "usuarios";
 
 const getAll = async () => {
@@ -19,7 +20,12 @@ const getById = async (id) => {
   return data;
 };
 
+
 const create = async (usuario) => {
+  if (usuario.password) {
+    const hashedPassword = await bcrypt.hash(usuario.password, saltRounds);
+    usuario.password = hashedPassword;
+  }
   const { data, error } = await supabase.from(table).insert(usuario).single();
   if (error) throw error;
   return data;
