@@ -30,6 +30,7 @@ const getHistorialPrestamosBySocio = async (req, res) => {
 };
 
 
+
 const createPrestamos = async (req, res) => {
   try {
     const nuevoPrestamos = await PrestamosService.createPrestamos(req.body);
