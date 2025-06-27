@@ -20,12 +20,22 @@ const getById = async (id) => {
 };
 
 const create = async (socio) => {
+  // Hasheamos la contraseña antes de guardar
+  if (socio.password) {
+    const hashedPassword = await bcrypt.hash(socio.password, saltRounds);
+    socio.password = hashedPassword;
+  }
   const { data, error } = await supabase.from(table).insert(socio).single();
   if (error) throw error;
   return data;
 };
 
 const update = async (id, socio) => {
+  // Si se actualiza la password, también la hasheamos
+  if (socio.password) {
+    const hashedPassword = await bcrypt.hash(socio.password, saltRounds);
+    socio.password = hashedPassword;
+  }
   const { data, error } = await supabase
     .from(table)
     .update(socio)
