@@ -17,7 +17,7 @@ module.exports = {
       // Buscar solo por email
       const { data, error } = await supabase
         .from("usuarios")
-        .select("id, nombre, email, perfil_id, estado, password_hash, telefono")
+        .select("id, nombre, email, perfil_id, estado, password_hash, telefono, dni")
         .eq("email", email)
         .single();
 

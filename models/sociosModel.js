@@ -26,7 +26,7 @@ const create = async (socio) => {
     const hashedPassword = await bcrypt.hash(socio.password, saltRounds);
     socio.password = hashedPassword;
   }
-  const { data, error } = await supabase.from(table).insert(socio).single();
+  const { data, error } = await supabase.from(table).insert(socio).select().single();
   if (error) throw error;
   return data;
 };

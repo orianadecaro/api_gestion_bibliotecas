@@ -21,6 +21,7 @@ const getSociosById = async (req, res) => {
 const createSocios = async (req, res) => {
   try {
     const data = await SociosService.createSocios(req.body);
+    console.log("Socio creado en controller:", data);
     res.status(201).json(data);
   } catch (err) {
     console.error("Error en createPrestamos:", err);

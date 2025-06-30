@@ -1,4 +1,4 @@
-// services/UsuarioService.js
+
 const UsuarioModel = require("../models/usuarioModel");
 const sendEmail = require("../emailSender");
 
@@ -11,28 +11,25 @@ const getUsuariosById = async (id) => {
 };
 
 
-
 const createUsuarios = async (usuarioData) => {
   try {
 
-    // 2. Crear usuario con password hasheado
-    const nuevoUsuario = await UsuarioModel.create(usuarioData
-    );
+    const nuevoUsuario = await UsuarioModel.create(usuarioData);
 
-    // 3. Enviar email de bienvenida
     if (nuevoUsuario?.email) {
       const subject = "¡Bienvenido/a a la plataforma!";
       const body = `
-        Hola ${nuevoUsuario.nombre},
+       <p>Hola ${nuevoUsuario.nombre},</p>
         
-        Te damos la bienvenida como nuevo staff de la bibilioteca. Gracias por sumarte  en nuestra comunidad.
+       <p>Te damos la bienvenida como nuevo staff de la bibilioteca. Gracias por sumarte  en nuestra comunidad.</p>
 
-        Ante cualquier consulta, estamos para ayudarte.
+       <p>Ante cualquier consulta, estamos para ayudarte.</p>
 
-        Saludos, Equipo Biblioteca
+       <p>Saludos, Equipo Biblioteca Jorge Luis Borges - EATA</p>
 
-        <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
+        <img src="https://gestion-bibliotecas-psi.vercel.app/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
       `;
+      console.log("Préstamo creado:", nuevoUsuario.email);
 
       await sendEmail(nuevoUsuario.email, subject, body);
     }

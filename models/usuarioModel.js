@@ -26,7 +26,7 @@ const create = async (usuario) => {
     const hashedPassword = await bcrypt.hash(usuario.password_hash, saltRounds);
     usuario.password_hash = hashedPassword;
   }
-  const { data, error } = await supabase.from(table).insert(usuario).single();
+  const { data, error } = await supabase.from(table).insert(usuario).select().single();
   if (error) throw error;
   return data;
 };

@@ -1,4 +1,4 @@
-// services/SociosService.js
+
 const SociosModel = require("../models/sociosModel");
 const sendEmail = require("../emailSender");
 
@@ -17,18 +17,17 @@ const createSocios = async (socioData) => {
     if (nuevoSocio?.email) {
       const subject = "¡Bienvenido/a a la comunidad!";
       const body = `
-     Hola ${nuevoSocio.nombre},
+     <p> Hola ${nuevoSocio.nombre},</p>
     
-     Te damos la bienvenida como nuevo socio/a. Gracias por sumarte a nuestra biblioteca.
+     <p>Te damos la bienvenida como nuevo socio/a. Gracias por sumarte a nuestra biblioteca.</p>
     
-     Ante cualquier consulta, estamos para ayudarte.
+     <p>Ante cualquier consulta, estamos para ayudarte.</p>
     
-     Saludos, Biblioteca Jorge Luis Borges - EATA
+     <p>Saludos, Biblioteca Jorge Luis Borges - EATA</p>
     
-      <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
+      <img src="https://gestion-bibliotecas-psi.vercel.app/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
     `;
-
-
+      console.log("Enviando email a:", nuevoSocio.email);
       await sendEmail(nuevoSocio.email, subject, body);
     }
 
@@ -38,6 +37,7 @@ const createSocios = async (socioData) => {
     throw error;
   }
 };
+
 const updateSocios = async (id, SociosData) => {
   return await SociosModel.update(id, SociosData);
 };

@@ -52,7 +52,7 @@ const createPrestamos = async (prestamosData) => {
        <p> Saludos,</p>
        <p> Biblioteca Jorge Luis Borges - EATA</p>
 
-        <img src="/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
+        <img src="https://gestion-bibliotecas-psi.vercel.app/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
       `;
       await sendEmail(socio.email, subject, body);
     }
@@ -75,21 +75,22 @@ const updatePrestamos = async (id, prestamosData) => {
   if (socio?.email) {
     const subject = "Actualización de préstamo - Biblioteca Jorge Luis Borges";
     const body = `
-      Hola ${socio.nombre},
+      <p> Hola ${socio.nombre},  </p>
 
-      Tu préstamo ha sido actualizado con éxito.
+      <p>  Tu préstamo ha sido actualizado con éxito.</p>
 
-      Estado actual del préstamo: ${prestamosData.estado || prestamoActualizado.estado
-      }
-      Fecha de devolución: ${prestamosData.fechadevolucion ||
+      <p>   Estado actual del préstamo: ${prestamosData.estado || prestamoActualizado.estado}</p>
+      <p>  Fecha de devolución: ${prestamosData.fechadevolucion ||
       prestamoActualizado.fechadevolucion ||
       "No especificada"
-      }
+      }</p>
 
-      Muchas gracias por usar nuestra biblioteca.
+      <p> Muchas gracias por usar nuestra biblioteca.</p>
 
-      Saludos,
-      Biblioteca Jorge Luis Borges
+    <p> Saludos,</p>
+    <p> Biblioteca Jorge Luis Borges - EATA</p>
+
+    <img src="https://gestion-bibliotecas-psi.vercel.app/logo.jpeg" alt="Logo Biblioteca" style="width:150px; height:auto;" />
     `;
     await sendEmail(socio.email, subject, body);
   }
