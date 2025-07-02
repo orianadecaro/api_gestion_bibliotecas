@@ -41,13 +41,14 @@ const update = async (id, socio) => {
     .from(table)
     .update(socio)
     .eq("id", id)
+    .select()
     .single();
   if (error) throw error;
   return data;
 };
 
 const remove = async (id) => {
-  const { data, error } = await supabase.from(table).delete().eq("id", id);
+  const { data, error } = await supabase.from(table).delete().eq("id", id).select().single()
   if (error) throw error;
   return data;
 };

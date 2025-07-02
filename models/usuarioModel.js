@@ -35,6 +35,7 @@ const update = async (id, usuario) => {
   const { data, error } = await supabase
     .from(table)
     .update(usuario)
+    .select()
     .eq("id", id)
     .single();
   if (error) throw error;
@@ -42,7 +43,7 @@ const update = async (id, usuario) => {
 };
 
 const remove = async (id) => {
-  const { data, error } = await supabase.from(table).delete().eq("id", id);
+  const { data, error } = await supabase.from(table).delete().eq("id", id).select().single();
   if (error) throw error;
   return data;
 };

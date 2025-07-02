@@ -20,7 +20,7 @@ const getById = async (id) => {
 };
 
 const create = async (perfil) => {
-  const { data, error } = await supabase.from(table).insert(perfil).single();
+  const { data, error } = await supabase.from(table).insert(perfil).select().single();
   if (error) throw error;
   return data;
 };
@@ -30,13 +30,14 @@ const update = async (id, perfil) => {
     .from(table)
     .update(perfil)
     .eq("id", id)
+    .select()
     .single();
   if (error) throw error;
   return data;
 };
 
 const remove = async (id) => {
-  const { data, error } = await supabase.from(table).delete().eq("id", id);
+  const { data, error } = await supabase.from(table).delete().eq("id", id).select().single();
   if (error) throw error;
   return data;
 };

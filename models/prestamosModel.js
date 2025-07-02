@@ -57,7 +57,7 @@ const update = async (id, prestamo) => {
 };
 
 const remove = async (id) => {
-  const { data, error } = await supabase.from(table).delete().eq("id", id);
+  const { data, error } = await supabase.from(table).delete().eq("id", id).select().single();
   if (error) throw error;
   return data;
 };

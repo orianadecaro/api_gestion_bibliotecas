@@ -20,7 +20,7 @@ const getById = async (id) => {
 };
 
 const create = async (libro) => {
-  const { data, error } = await supabase.from(table).insert(libro).single();
+  const { data, error } = await supabase.from(table).insert(libro).select().single();
   if (error) throw error;
   return data;
 };
@@ -30,13 +30,14 @@ const update = async (id, libro) => {
     .from(table)
     .update(libro)
     .eq("id", id)
+    .select()
     .single();
   if (error) throw error;
   return data;
 };
 
 const remove = async (id) => {
-  const { data, error } = await supabase.from(table).delete().eq("id", id);
+  const { data, error } = await supabase.from(table).delete().eq("id", id).select().single();
   if (error) throw error;
   return data;
 };
