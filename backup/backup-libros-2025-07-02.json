@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "autor": "Napoleon Hill",
+    "codigo": "021548",
+    "titulo": "Piense y hagalo",
+    "materia": "Economía",
+    "editorial": "Del Fondo",
+    "cantidad": 2,
+    "estado": "Disponible"
+  },
+  {
+    "id": 4,
+    "autor": " Louisa May Alcott",
+    "codigo": "0001",
+    "titulo": "Mujercitas",
+    "materia": "Literatura",
+    "editorial": "Ediciones libertador",
+    "cantidad": 2,
+    "estado": "Disponible"
+  },
+  {
+    "id": 5,
+    "autor": "Galeano, Eduardo",
+    "codigo": "0003",
+    "titulo": "Bocas del tiempo",
+    "materia": "Literatura uruguaya",
+    "editorial": "Siglo veintiuno",
+    "cantidad": 3,
+    "estado": "Disponible"
+  },
+  {
+    "id": 6,
+    "autor": "Borges Jorge Luis",
+    "codigo": "004",
+    "titulo": "El aleph",
+    "materia": "Literatura argentina ",
+    "editorial": "Planeta ",
+    "cantidad": 1,
+    "estado": "Disponible"
+  },
+  {
+    "id": 8,
+    "autor": "Louisa May Alcott",
+    "codigo": "100000",
+    "titulo": "Mujercitas",
+    "materia": "Literatura1",
+    "editorial": "Ediciones libertador",
+    "cantidad": 2,
+    "estado": "Disponible"
+  },
+  {
+    "id": 9,
+    "autor": "Borges Jorge Luis",
+    "codigo": "00400",
+    "titulo": "El aleph",
+    "materia": "Literatura argentina 6",
+    "editorial": "Planeta ",
+    "cantidad": 1,
+    "estado": "Disponible"
+  },
+  {
+    "id": 11,
+    "autor": "Rowling",
+    "codigo": "123456",
+    "titulo": "Harry Potter 1",
+    "materia": "Literatura",
+    "editorial": "Santillana",
+    "cantidad": 3,
+    "estado": "Disponible"
+  },
+  {
+    "id": 12,
+    "autor": "CHARLES DATE",
+    "codigo": "97989695",
+    "titulo": "BASES DE DATOS",
+    "materia": "BASE DE DATOS",
+    "editorial": "PEARSON EDUCATION",
+    "cantidad": 3,
+    "estado": "Disponible"
+  },
+  {
+    "id": 13,
+    "autor": "Canela",
+    "codigo": "16378",
+    "titulo": "Lola descubre el aire",
+    "materia": "Literatura infantil",
+    "editorial": "Sudamericana",
+    "cantidad": 1,
+    "estado": "Disponible"
+  }
+]

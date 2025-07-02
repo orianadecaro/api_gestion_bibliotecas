@@ -1,0 +1,10 @@
+[
+  {
+    "id": 23,
+    "libro_id": 6,
+    "socio_id": 12,
+    "fechaprestamo": "2025-06-27",
+    "fechadevolucion": null,
+    "estado": "En prestamo"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 12,
+    "nombre": "oriana dek valle",
+    "email": "odecaro888@alumnos.iua.edu.ar",
+    "perfil_id": 3,
+    "estado": true,
+    "telefono": "3874566383",
+    "dni": "34439888",
+    "password": "$2b$10$yHnplNSq0x/fLf7i5DE7TeUaz9hBC5VBfcMpjaX3M5Ie/szjI0mne"
+  },
+  {
+    "id": 15,
+    "nombre": "Profe",
+    "email": "profeorianadecaro@gmail.com",
+    "perfil_id": 3,
+    "estado": true,
+    "telefono": "123456",
+    "dni": "123456",
+    "password": "$2b$10$DBUs3LyG/rf9XBhmH.Zgwe1oEUhMOun1pNmedTla0QdwdkaeiB81O"
+  },
+  {
+    "id": 16,
+    "nombre": "sandra G",
+    "email": "galianosandra1967@gmail.com",
+    "perfil_id": 3,
+    "estado": true,
+    "telefono": "2983465758",
+    "dni": "18248088",
+    "password": "$2b$10$g7udOfiu/BoHTvVTqeA4YeYQlPTMQatw6LqvVZSXO82GzJmd0lXC2"
+  }
+]
